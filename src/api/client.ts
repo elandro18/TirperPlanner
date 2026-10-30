@@ -1,4 +1,5 @@
-const BASE = (import.meta.env.VITE_API_URL as string | undefined)?.trim() || '/api/v1';
+const bruto = (import.meta.env.VITE_API_URL as string | undefined)?.trim();
+const BASE = bruto ? bruto.replace(/\/+$/, '') : '/api/v1';
 const TOKEN_KEY = 'trip-planner:token';
 
 export interface ApiErro {
