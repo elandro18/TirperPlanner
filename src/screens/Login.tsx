@@ -20,7 +20,7 @@ export function Login() {
     setEnviando(true)
     try {
       await entrar(email, senha)
-      navigate('/', { replace: true })
+      navigate('/inicio', { replace: true })
     } catch (falha) {
       setErro(mensagemDeErro(falha))
     } finally {

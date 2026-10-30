@@ -18,7 +18,13 @@ export interface ItemNav {
 }
 
 export const NAV_PRINCIPAL: ItemNav[] = [
-  { para: '/', rotulo: 'Início', rotuloCurto: 'Início', icone: Home, exato: true },
+  {
+    para: '/inicio',
+    rotulo: 'Início',
+    rotuloCurto: 'Início',
+    icone: Home,
+    exato: true,
+  },
   {
     para: '/planejamento',
     rotulo: 'Planejamento',
