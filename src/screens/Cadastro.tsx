@@ -32,7 +32,7 @@ export function Cadastro() {
     setEnviando(true)
     try {
       await cadastrar(nome, email, senha)
-      navigate('/', { replace: true })
+      navigate('/inicio', { replace: true })
     } catch (falha) {
       setErro(mensagemDeErro(falha))
     } finally {

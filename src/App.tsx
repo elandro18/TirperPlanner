@@ -3,6 +3,7 @@ import { AuthProvider } from './auth/AuthProvider'
 import { RequireAuth } from './auth/RequireAuth'
 import { TripProvider } from './store/TripStore'
 import { AppShell } from './components/layout/AppShell'
+import { Landing } from './screens/Landing'
 import { Login } from './screens/Login'
 import { Cadastro } from './screens/Cadastro'
 import { MinhasViagens } from './screens/MinhasViagens'
@@ -22,9 +23,12 @@ export default function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
+          {/* Públicas — a landing é exibida sem sessão e sem AppShell */}
+          <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
 
+          {/* App autenticado — layout sem path, filhos com caminho absoluto */}
           <Route
             element={
               <RequireAuth>
@@ -34,19 +38,21 @@ export default function App() {
               </RequireAuth>
             }
           >
-            <Route index element={<MinhasViagens />} />
-            <Route path="planejamento" element={<Planejamento />} />
-            <Route path="roteiro" element={<Roteiro />} />
-            <Route path="mapa" element={<Mapa />} />
-            <Route path="viagem" element={<ViagemDashboard />} />
-            <Route path="nova-viagem" element={<CriarViagem />} />
-            <Route path="cadastro/local" element={<CadastroLocal />} />
-            <Route path="cadastro/passagem" element={<CadastroPassagem />} />
-            <Route path="cadastro/hotel" element={<CadastroHotel />} />
-            <Route path="listas" element={<Listas />} />
-            <Route path="estados" element={<Estados />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="/inicio" element={<MinhasViagens />} />
+            <Route path="/planejamento" element={<Planejamento />} />
+            <Route path="/roteiro" element={<Roteiro />} />
+            <Route path="/mapa" element={<Mapa />} />
+            <Route path="/viagem" element={<ViagemDashboard />} />
+            <Route path="/nova-viagem" element={<CriarViagem />} />
+            <Route path="/cadastro/local" element={<CadastroLocal />} />
+            <Route path="/cadastro/passagem" element={<CadastroPassagem />} />
+            <Route path="/cadastro/hotel" element={<CadastroHotel />} />
+            <Route path="/listas" element={<Listas />} />
+            <Route path="/estados" element={<Estados />} />
           </Route>
+
+          {/* Fallback público */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
